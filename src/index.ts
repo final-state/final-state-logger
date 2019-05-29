@@ -8,12 +8,14 @@ export default function finalStateLogger(store: Store) {
     const nextState = store.getState();
     const now = new Date();
     const output = [
-      `Action[%c${type}%c]\n${format(
+      `%c${store.name}%c#%c${type}%c\n${format(
         now,
         'yyyy-MM-dd HH:mm:ss:SSS',
       )}(${now.getTime()})`,
-      'color: red;',
+      'color: blue;',
       'color: black;',
+      'color: red;',
+      'color: gray;',
     ];
     try {
       console.group(...output);
