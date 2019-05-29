@@ -1,6 +1,6 @@
 {
-  "name": "final-state",
-  "version": "0.2.6",
+  "name": "final-state-logger",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "author": "yuanqiulee@gmail.com",
   "license": "MIT",
