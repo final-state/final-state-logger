@@ -41,5 +41,3 @@ yarn test
 ```
 
 ## Road Map
-
-- [ ] Write tests
