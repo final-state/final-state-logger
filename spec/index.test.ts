@@ -1,60 +1,60 @@
-/* eslint no-param-reassign:0 */
+/* eslint no-param-reassign:0,no-console:0 */
 import Store, { ActionMap } from 'final-state';
 import finalStateLogger from '../src';
 
-interface IState {
+interface State {
   count: number;
 }
 
-const initialState: IState = {
+const initialState: State = {
   count: 0,
 };
 
 const actions: ActionMap = {
-  increaseCount(draft: IState, n = 1) {
+  increaseCount(draft: State, n = 1) {
     draft.count += n;
-  }
-}
+  },
+};
 
 test('Test log output', () => {
-  const store = new Store(initialState, actions, 'final-state-rx-test-1');
+  const store = new Store(initialState, actions, 'test-store');
 
   const mockSubscribe = jest.fn(store.subscribe);
-  store.subscribe = mockSubscribe
+  store.subscribe = mockSubscribe;
 
-  const mockLog = jest.fn(console.log)
-  const prevLog = console.log
-  console.log = mockLog
+  const mockLog = jest.fn(console.log);
+  const prevLog = console.log;
+  console.log = mockLog;
 
-  finalStateLogger(store)
+  finalStateLogger(store);
   store.dispatch('increaseCount', 2);
-  
-  expect(mockSubscribe).toHaveBeenCalled()
-  expect(mockLog).toHaveBeenCalled()
 
-  console.log = prevLog
+  expect(mockSubscribe).toHaveBeenCalled();
+  expect(mockLog).toHaveBeenCalled();
+
+  console.log = prevLog;
 });
 
 test('Test log handle exception', () => {
-  const store = new Store(initialState, actions, 'final-state-rx-test-1');
+  const store = new Store(initialState, actions, 'test-store');
 
-  const mockLog = jest.fn(console.log)
-  const prevLog = console.log
-  console.log = mockLog
+  const mockLog = jest.fn(console.log);
+  const prevLog = console.log;
+  console.log = mockLog;
 
-  const prevGroup = console.group
-  console.group = null
+  const prevGroup = console.group;
+  console.group = null;
 
-  const prevGroupEnd = console.groupEnd
-  console.groupEnd = null
+  const prevGroupEnd = console.groupEnd;
+  console.groupEnd = null;
 
-  finalStateLogger(store)
+  finalStateLogger(store);
   store.dispatch('increaseCount', 2);
-  
-  expect(mockLog).toHaveBeenCalledWith('—— action end ——')
-  expect(mockLog).toHaveBeenCalledWith('————————————————')
-  
-  console.log = prevLog
-  console.group = prevGroup
-  console.groupEnd = prevGroupEnd
+
+  expect(mockLog).toHaveBeenCalledWith('—— action end ——');
+  expect(mockLog).toHaveBeenCalledWith('————————————————');
+
+  console.log = prevLog;
+  console.group = prevGroup;
+  console.groupEnd = prevGroupEnd;
 });
