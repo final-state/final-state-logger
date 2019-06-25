@@ -1,6 +1,6 @@
 /* eslint no-param-reassign:0,no-console:0 */
-import Store, { ActionMap } from 'final-state';
-import finalStateLogger from '../src';
+import { createStore, ActionMap } from '@liyuanqiu/final-state';
+import { applyLogger } from '../src';
 
 interface State {
   count: number;
@@ -17,7 +17,7 @@ const actions: ActionMap = {
 };
 
 test('Test log output', () => {
-  const store = new Store(initialState, actions, 'test-store');
+  const store = createStore(initialState, actions, 'test-store');
 
   const mockSubscribe = jest.fn(store.subscribe);
   store.subscribe = mockSubscribe;
@@ -26,7 +26,7 @@ test('Test log output', () => {
   const prevLog = console.log;
   console.log = mockLog;
 
-  finalStateLogger(store);
+  applyLogger(store);
   store.dispatch('increaseCount', 2);
 
   expect(mockSubscribe).toHaveBeenCalled();
@@ -36,19 +36,23 @@ test('Test log output', () => {
 });
 
 test('Test log handle exception', () => {
-  const store = new Store(initialState, actions, 'test-store');
+  const store = createStore(initialState, actions, 'test-store');
 
   const mockLog = jest.fn(console.log);
   const prevLog = console.log;
   console.log = mockLog;
 
   const prevGroup = console.group;
-  console.group = null;
+  console.group = () => {
+    throw Error();
+  };
 
   const prevGroupEnd = console.groupEnd;
-  console.groupEnd = null;
+  console.groupEnd = () => {
+    throw Error();
+  };
 
-  finalStateLogger(store);
+  applyLogger(store);
   store.dispatch('increaseCount', 2);
 
   expect(mockLog).toHaveBeenCalledWith('—— action end ——');

@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.com/final-state/final-state-logger.svg?branch=master)](https://travis-ci.com/final-state/final-state-logger)
-[![codecov.io](https://codecov.io/gh/final-state/final-state-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/final-state/final-state-logger)
+[![Build Status](https://travis-ci.com/final-state/final-state-logger.svg?branch=next)](https://travis-ci.com/final-state/final-state-logger)
+[![codecov.io](https://codecov.io/gh/final-state/final-state-logger/branch/next/graph/badge.svg)](https://codecov.io/gh/final-state/final-state-logger)
 [![Known Vulnerabilities](https://snyk.io/test/github/final-state/final-state-logger/badge.svg)](https://snyk.io/test/github/final-state/final-state-logger)
-[![minified + gzip](https://badgen.net/bundlephobia/minzip/final-state-logger@0.2.0)](https://bundlephobia.com/result?p=final-state-logger@0.2.0)
+[![minified + gzip](https://badgen.net/bundlephobia/minzip/@liyuanqiu/final-state-logger@0.2.0)](https://bundlephobia.com/result?p=@liyuanqiu/final-state-logger@0.2.0)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 # final-state-logger
@@ -11,6 +11,7 @@
 ## Installation
 
 ```bash
+yarn add final-state
 yarn add final-state-logger
 ```
 
@@ -21,9 +22,9 @@ You should care about the `peer dependencies` of this package. If something not 
 ## Basic Example
 
 ```javascript
-import finalStateLogger from 'final-state-logger';
+import { applyLogger } from 'final-state-logger';
 
-finalStateLogger(store);
+applyLogger(store);
 ```
 
 ## API Reference

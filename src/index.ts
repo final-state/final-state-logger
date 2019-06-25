@@ -1,9 +1,10 @@
 /* eslint no-console:0 */
-import Store, { Listener } from 'final-state';
+import { Store, Listener } from '@liyuanqiu/final-state';
 import format from 'date-fns/format';
 import diffLogger from './diff';
 
-export default function finalStateLogger(store: Store) {
+// eslint-disable-next-line import/prefer-default-export
+export function applyLogger(store: Store) {
   const listener: Listener = (type, prevState) => {
     const nextState = store.getState();
     const now = new Date();
