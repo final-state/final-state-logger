@@ -1,5 +1,5 @@
 /* eslint no-param-reassign:0,no-console:0 */
-import { createStore, ActionMap } from '@liyuanqiu/final-state';
+import { createStore, ActionMap } from 'final-state';
 import { applyLogger } from '../src';
 
 interface State {

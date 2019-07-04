@@ -1,5 +1,5 @@
 {
-  "name": "@liyuanqiu/final-state-logger",
+  "name": "final-state-logger",
   "version": "1.0.0",
   "author": "yuanqiulee@gmail.com",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
     "test": "tsdx test --coverage"
   },
   "peerDependencies": {
-    "@liyuanqiu/final-state": "^1.0.7",
+    "final-state": "^1.1.0",
     "date-fns": "^2.0.0-alpha.1"
   },
   "husky": {
@@ -32,7 +32,7 @@
     }
   },
   "devDependencies": {
-    "@liyuanqiu/final-state": "^1.0.7",
+    "final-state": "^1.1.0",
     "@types/jest": "^24.0.15",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",

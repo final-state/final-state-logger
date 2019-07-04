@@ -1,5 +1,5 @@
 /* eslint no-console:0 */
-import { Store, Listener } from '@liyuanqiu/final-state';
+import { Store, Listener } from 'final-state';
 import format from 'date-fns/format';
 import diffLogger from './diff';
 
